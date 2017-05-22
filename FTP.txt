@@ -1,0 +1,48 @@
+URL- exioxtechnologies.com
+
+User- nata@exioxtechnologies.com
+Pwd- exiox@nata
+
+
+
+
+
+     $response = array();
+     $stmt = $this->conn->prepare("CREATE TABLE IF NOT EXISTS tbl_order (
+       id INT(11) NOT NULL AUTO_INCREMENT,
+       order_id VARCHAR(20) NOT NULL,
+       cust_id VARCHAR(10) NOT NULL,
+       date_of_order date NOT NULL,
+       delivery_date date NULL,
+       total_quantity VARCHAR(8) NOT NULL,
+       total_amount VARCHAR(10) NOT NULL,
+       discount VARCHAR(10) NULL,
+       staff_id INT(8) NOT NULL,
+       status INT(11) NOT NULL,
+       dt datetime NOT NULL,
+       updated_date datetime NOT NULL,
+       is_deleted INT(4) NOT NULL,
+       PRIMARY KEY (id)
+       )");
+
+
+     $result = $stmt->execute();
+     $stmt->close();
+
+     $stmt = $this->conn->prepare("CREATE TABLE IF NOT EXISTS tbl_order_detail (
+       id INT(11) NOT NULL AUTO_INCREMENT,
+       order_id VARCHAR(20) NOT NULL,
+       pdt_id INT(8) NOT NULL,
+       pdt_qty VARCHAR(8) NOT NULL,
+       pdt_total_amnt VARCHAR(10) NOT NULL,
+       pdt_discount VARCHAR(10) NULL,
+       dt datetime NOT NULL,
+       updated_date datetime NOT NULL,
+       is_deleted INT(4) NOT NULL,
+       PRIMARY KEY (id)
+       )");
+
+
+     $result = $stmt->execute();
+     $stmt->close();
+
